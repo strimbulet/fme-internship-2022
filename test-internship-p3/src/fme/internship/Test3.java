@@ -77,16 +77,54 @@
 
 package fme.internship;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 /**
  * 
- * @author <full name>
- * @email <email address>
+ * @author Strimbu Darius
+ * @email strimbudarius@gmail.com
  * 
  */
 public class Test3 {
 
     public static void main(String[] args) {
         System.out.println("FME Internship - Test3");
-    }
 
+        List<Shape> shapeList = new ArrayList<>();
+
+        try {
+            File myObj = new File("C:\\Users\\Darius\\Desktop\\internship\\fme-internship-2022\\test-internship-p2\\src\\shapes.in");
+            Scanner myReader = null;
+            myReader = new Scanner(myObj);
+
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                var words = data.split(":");
+                if (words[0].equals("Circle")) {
+                    shapeList.add(new Circle(1));
+                }
+                if (words[0].equals("Square")) {
+                    shapeList.add(new Square(1));
+                }
+                if (words[0].equals("Rectangle")) {
+                    shapeList.add(new Rectangle(1, 2));
+                }
+                if (words[0].equals("Triangle")) {
+                    shapeList.add(new Triangle(1, 2, 3));
+                }
+                // facem regex ca sa aflam si valorile
+
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+      // parcurgem lista de shapes si dupa calculam perimitru/aria si cu toString le afisam in ordine.
+
+    }
 }

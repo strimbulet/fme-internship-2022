@@ -37,6 +37,27 @@ package fme.internship;
 public class Test1 {
 
     public static void main(String[] args) {
+
+
+        int max = 0; // memoram maximul in timp ce parcurgem lista
+        boolean check = true;  // verificam daca toate sunt in ordine crescatoare
+
+        for(int i = 0; i<args.length; i++) {
+           if(Integer.parseInt(args[i]) > 0 && Integer.parseInt(args[i]) < max){
+               check = false; // daca gasim un element mai mic ca maximul care se afla dupa inseamna ca nu sunt in ordine
+           }
+           else if(Integer.parseInt(args[i]) > 0 && Integer.parseInt(args[i]) > max){
+               max = Integer.parseInt(args[i]); // setam maximul
+           }
+        }
+
+        // afisam rezultatul
+        if(check){
+            System.out.println("Yes");
+        }else{
+            System.out.println("No");
+        }
+
         System.out.println("FME Internship - Test1");
     }
 
